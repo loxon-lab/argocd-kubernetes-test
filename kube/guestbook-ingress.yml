@@ -4,20 +4,20 @@ kind: Ingress
 metadata:
   name: guestbook-http-ingress
   namespace: argocd-test
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  # annotations:
+  #   kubernetes.io/ingress.class: "nginx"
+  #   nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
   - http:
       paths:
       - backend:
           serviceName: guestbook-ui
-          servicePort: https
+          servicePort: http
         path: /
     host: guestbook.k8s.intranet.loxon.eu
-  tls:
-  - hosts:
-    - guestbook.k8s.intranet.loxon.eu
-    secretName: k8s-tls-bundle
+  # tls:
+  # - hosts:
+  #   - guestbook.k8s.intranet.loxon.eu
+  #   secretName: k8s-tls-bundle
