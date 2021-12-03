@@ -6,6 +6,7 @@ metadata:
   namespace: argocd-test
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   rules:
@@ -16,3 +17,7 @@ spec:
           servicePort: http
         path: /
     host: guestbook.k8s.intranet.loxon.eu
+  tls:
+  - hosts:
+    - guestbook.k8s.intranet.loxon.eu
+    secretName: k8s-tls-bundle
