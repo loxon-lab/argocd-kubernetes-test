@@ -4,7 +4,7 @@ metadata:
   name: guestbook-ui
   namespace: argocd-test
   labels:
-    info: "HelloPoro!"
+    info: HelloPoro
 spec:
   replicas: 1
   revisionHistoryLimit: 3
