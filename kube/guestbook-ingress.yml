@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           serviceName: guestbook-ui
-          servicePort: 80
+          servicePort: https
         path: /
     host: guestbook.k8s.intranet.loxon.eu
   tls:
