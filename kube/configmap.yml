@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-configmap-test
+  namespace: argocd-test
+data:
+  FOO: "bar"
