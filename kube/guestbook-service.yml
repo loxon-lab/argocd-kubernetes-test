@@ -5,7 +5,7 @@ metadata:
   namespace: argocd-test
 spec:
   ports:
-  - port: https
+  - port: 80443
     targetPort: 80
   selector:
     app: guestbook-ui
