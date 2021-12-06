@@ -57,16 +57,14 @@ metadata:
   name: poro-http-ingress
   namespace: poro
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/rewrite-target: /v2/$2
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - host: poro.k8s.intranet.loxon.eu
     http:
       paths:
-        - path: /v2(/|$)(.*)
+        - path: /v2/(/|$)(.*)
+          pathType: Prefix
           pathType: Prefix
           backend:
             serviceName: hello-eks-a
