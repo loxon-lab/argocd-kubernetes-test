@@ -50,33 +50,42 @@ spec:
   ports:
     - port: 80
 ---
----
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: getambassador.io/v2
+kind: Mapping
 metadata:
-  name: poro-http-ingress
-  namespace: poro
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+ name: hello-eks-a-Mapping
+ namespace: poro
 spec:
-  ingressClassName: nginx
-  rules:
-  - host: poro.k8s.intranet.loxon.eu
-    http:
-      paths:
-        - path: /v2(/|$)(.*)
-          pathType: Prefix
-          backend:
-            serviceName: hello-eks-a
-            servicePort: 80
-  tls:
-  - hosts:
-    - poro.k8s.intranet.loxon.eu
-    secretName: selfsigned-cert
-status:
-  loadBalancer:
-    ingress:
-      - ip: 192.168.1.21
+ prefix: /helloeks/
+ rewrite: /
+ service: hello-eks-a:80
+---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: poro-http-ingress
+#   namespace: poro
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /$2
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: poro.k8s.intranet.loxon.eu
+#     http:
+#       paths:
+#         - path: /v2(/|$)(.*)
+#           pathType: Prefix
+#           backend:
+#             serviceName: hello-eks-a
+#             servicePort: 80
+#   tls:
+#   - hosts:
+#     - poro.k8s.intranet.loxon.eu
+#     secretName: selfsigned-cert
+# status:
+#   loadBalancer:
+#     ingress:
+#       - ip: 192.168.1.21
     
   # tls:
   # - hosts:
