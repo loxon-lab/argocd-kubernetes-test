@@ -63,7 +63,7 @@ spec:
   - host: poro.k8s.intranet.loxon.eu
     http:
       paths:
-        - path: /v2(/|$)(.*)
+        - path: /v2/(/|$)(.*)
           pathType: Prefix
           pathType: Prefix
           backend:
