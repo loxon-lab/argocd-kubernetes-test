@@ -2,7 +2,7 @@
 # kind: Deployment
 # metadata:
 #   name: guestbook-ui
-#   namespace: argocd-test
+#   namespace: poro
 #   labels:
 #     info: HelloPoro
 # spec:
