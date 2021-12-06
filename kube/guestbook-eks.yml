@@ -62,13 +62,16 @@ metadata:
   #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - http:
+  - host: guestbook.k8s.intranet.loxon.eu
+    http:
       paths:
-      - backend:
-          serviceName: hello-eks-a
-          servicePort: 80
-        path: /v2
-    host: guestbook.k8s.intranet.loxon.eu
+        - path: /v2
+          pathType: Prefix
+          backend:
+            serviceName: hello-eks-a
+            servicePort: 80
+        
+    
   # tls:
   # - hosts:
   #   - guestbook.k8s.intranet.loxon.eu
