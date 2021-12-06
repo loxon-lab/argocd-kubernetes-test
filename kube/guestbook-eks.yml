@@ -67,7 +67,7 @@ spec:
       - backend:
           serviceName: hello-eks-a
           servicePort: 80
-        path: /
+        path: /v2
     host: guestbook.k8s.intranet.loxon.eu
   # tls:
   # - hosts:
