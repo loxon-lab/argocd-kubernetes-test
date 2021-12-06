@@ -62,7 +62,7 @@ metadata:
   #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - host: guestbook.k8s.intranet.loxon.eu
+  - host: wp.k8s.intranet.loxon.eu
     http:
       paths:
         - path: /v2
