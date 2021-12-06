@@ -59,12 +59,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: nginx
   rules:
   - host: poro.k8s.intranet.loxon.eu
     http:
       paths:
-        - path: /v2/(/|$)(.*)
-          pathType: Prefix
+        - path: /v2(/|$)(.*)
           pathType: Prefix
           backend:
             serviceName: hello-eks-a
