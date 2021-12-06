@@ -56,8 +56,8 @@ kind: Ingress
 metadata:
   name: poro-http-ingress
   namespace: poro
-    annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: 20m
+#    annotations:
+#    nginx.ingress.kubernetes.io/proxy-body-size: 20m
 spec:
   rules:
   - host: wp.k8s.intranet.loxon.eu
