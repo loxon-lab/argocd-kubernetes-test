@@ -50,7 +50,7 @@ spec:
   ports:
     - port: 80
 ---
-apiVersion: getambassador.io/v2
+apiVersion: apps/v1
 kind: Mapping
 metadata:
  name: poro-Mapping
