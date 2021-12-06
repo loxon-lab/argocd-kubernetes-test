@@ -65,7 +65,6 @@ spec:
       paths:
         - path: /v2(/|$)(.*)
           pathType: Prefix
-          pathType: Prefix
           backend:
             serviceName: hello-eks-a
             servicePort: 80
