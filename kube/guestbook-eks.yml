@@ -60,7 +60,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - host: wp.k8s.intranet.loxon.eu
+  - host: poro.k8s.intranet.loxon.eu
     http:
       paths:
       - path: /v2(/|$)(.*)
@@ -70,7 +70,7 @@ spec:
             servicePort: 80
   tls:
   - hosts:
-    - wp.k8s.intranet.loxon.eu
+    - poro.k8s.intranet.loxon.eu
     secretName: selfsigned-cert
 status:
   loadBalancer:
