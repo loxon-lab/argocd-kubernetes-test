@@ -58,6 +58,8 @@ metadata:
   namespace: poro
   annotations:
     kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
 spec:
   rules:
   - host: wp.k8s.intranet.loxon.eu
