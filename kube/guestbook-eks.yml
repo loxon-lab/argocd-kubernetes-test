@@ -56,8 +56,7 @@ metadata:
  name: hello-eks-a
  namespace: poro
 spec:
- prefix: /helloeks/
- rewrite: /
+ prefix: /helloeks
  service: hello-eks-a
  hostname: "*"
     
