@@ -7,7 +7,7 @@ metadata:
   labels:
     app: hello-eks-a
   annotations:
-    link.argocd.argoproj.io/external-link: https://192.168.1.25/hci/test1
+    link.argocd.argoproj.io/external-link: https://192.168.1.25/hci/pull1
 spec:
   replicas: 1
   selector:
@@ -58,7 +58,7 @@ metadata:
  name: hello-eks-a
  namespace: poro
 spec:
- prefix: /hci/test1
+ prefix: /hci/pull1
  service: hello-eks-a
  hostname: "*"
     
