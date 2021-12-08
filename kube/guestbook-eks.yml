@@ -50,7 +50,7 @@ spec:
   ports:
     - port: 80
 ---
-apiVersion: getambassador.io/v2
+apiVersion: getambassador.io/v3alpha1
 kind: Mapping
 metadata:
  name: hello-eks-a
@@ -58,7 +58,8 @@ metadata:
 spec:
  prefix: /helloeks/
  rewrite: /
- service: hello-eks-a:80
+ service: hello-eks-a
+ hostname: "*"
     
   # tls:
   # - hosts:
