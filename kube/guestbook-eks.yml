@@ -53,7 +53,7 @@ spec:
 apiVersion: getambassador.io/v2
 kind: Mapping
 metadata:
- name: hello-eks-a-Mapping
+ name: hello-eks-a
  namespace: poro
 spec:
  prefix: /helloeks/
