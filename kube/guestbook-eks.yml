@@ -8,7 +8,7 @@ metadata:
     app: hello-eks-a
   annotations:
     link.argocd.argoproj.io/external-link: https://192.168.1.25/hci/test1
-    link.argocd.argoproj.io/external-link: https://192.168.1.25/hci/test1
+    link.argocd.argoproj.io/external-link: https://192.168.1.25/hci/test2
 spec:
   replicas: 1
   selector:
