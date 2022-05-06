@@ -52,6 +52,7 @@ spec:
 ---
 #uj
 
+#ingress internet facing
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
@@ -70,6 +71,24 @@ spec:
               serviceName: hello-eks-a
               servicePort: 80
 
+#ingress internal
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: poro
+  name: ingress-poro-internal
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: hello-eks-a
+              servicePort: 80
 #regi
 #---
 #apiVersion: extensions/v1beta1
