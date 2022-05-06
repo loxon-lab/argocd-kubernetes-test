@@ -50,33 +50,54 @@ spec:
   ports:
     - port: 80
 ---
----
-apiVersion: extensions/v1beta1
+#uj
+
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: poro-http-ingress
   namespace: poro
+  name: ingress-poro
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
-  ingressClassName: nginx
   rules:
-  - host: poro.k8s.intranet.loxon.eu
-    http:
-      paths:
-        - path: /v3(/|$)(.*)
-          pathType: Prefix
-          backend:
-            serviceName: hello-eks-a
-            servicePort: 80
-  tls:
-  - hosts:
-    - poro.k8s.intranet.loxon.eu
-    secretName: selfsigned-cert
-status:
-  loadBalancer:
-    ingress:
-      - ip: 192.168.1.21
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: hello-eks-a
+              servicePort: 80
+
+#regi
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: poro-http-ingress
+#  namespace: poro
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /$2
+#spec:
+#  ingressClassName: nginx
+#  rules:
+#  - host: poro.k8s.intranet.loxon.eu
+#    http:
+#      paths:
+#        - path: /v3(/|$)(.*)
+#          pathType: Prefix
+#          backend:
+#            serviceName: hello-eks-a
+#            servicePort: 80
+#  tls:
+#  - hosts:
+#    - poro.k8s.intranet.loxon.eu
+#    secretName: selfsigned-cert
+#status:
+#  loadBalancer:
+#    ingress:
+#      - ip: 192.168.1.21
     
   # tls:
   # - hosts:
