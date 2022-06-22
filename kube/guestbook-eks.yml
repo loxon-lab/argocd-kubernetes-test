@@ -3,11 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-eks-a
-  namespace: poro
+  namespace: hello-eks
   labels:
     app: hello-eks-a
-  annotations:
-    link.argocd.argoproj.io/external-link: https://192.168.1.25/hci/test1
 spec:
   replicas: 1
   selector:
@@ -44,7 +42,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hello-eks-a
-  namespace: poro
+  namespace: hello-eks
 spec:
   type: NodePort
   selector:
@@ -52,17 +50,25 @@ spec:
   ports:
     - port: 80
 ---
-apiVersion: getambassador.io/v3alpha1
-kind: Mapping
+#uj
+
+#ingress internet facing
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
 metadata:
- name: hello-eks-a
- namespace: poro
+  namespace: hello-eks
+  name: ingress-hello-eks
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-central-1:309362968926:certificate/f98eb79f-1bf0-4727-9af5-99edf065511c
 spec:
- prefix: /hci/test1
- service: hello-eks-a
- hostname: "*"
-    
-  # tls:
-  # - hosts:
-  #   - guestbook.k8s.intranet.loxon.eu
-  #   secretName: k8s-tls-bundle
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: hello-eks-a
+              servicePort: 80
